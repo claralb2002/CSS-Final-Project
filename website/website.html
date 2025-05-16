@@ -6,9 +6,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 <style>
-body,h1,h2,h3,h4,h5,h6 {font-family: "Lato", sans-serif;}
+body,h1,h2,h3,h4,h5,h6 {font-family: "Manrope", sans-serif;}
 body, html {
   height: 100%;
   color: #777;
@@ -113,7 +114,7 @@ body, html {
     <!-- Dropdown DISCUSSION -->
     <a href="#download" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-download"></i> Discussion</a>
 
-    <a href="#download" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-download"></i> Download notebook</a>
+    <a class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-download"></i> Download notebook</a>
   </div>
 </div>
 
@@ -147,9 +148,9 @@ body, html {
 </div>
 
 <!-- First Parallax Image with Portfolio Text -->
-<div class="bgimg-1 w3-display-container w3-opacity-min">
+<div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
+    <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
   </div>
 </div>
 
@@ -179,7 +180,76 @@ body, html {
   
   <h4 id="stats">Dataset Stats</h4>
   <p>Our dataset consists of 5,000 songs across 30 years with full metadata and cleaned lyrics.</p>
+
+<!-- Table Presentation -->
+<div class="w3-responsive" style="margin-top:32px;">
+  <h4>Sample Song Dataset</h4>
+  <div style="max-height: 500px; overflow-y: auto; border: 1px solid #ccc; border-radius: 4px;">
+    <table class="w3-table-all w3-hoverable" style="font-size: 14px;">
+      <thead>
+        <tr class="w3-light-grey">
+          <th>#</th>
+          <th>Artist</th>
+          <th>Name</th>
+          <th>Artists</th>
+          <th>Popularity</th>
+          <th>Duration (ms)</th>
+          <th>Year</th>
+          <th>Songwriters</th>
+          <th>Tokens</th>
+          <th>Lyrics</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>0</td>
+          <td>the chainsmokers</td>
+          <td>Something Just Like This</td>
+          <td>['the chainsmokers', 'coldplay']</td>
+          <td>90</td>
+          <td>247160</td>
+          <td>2017</td>
+          <td>['jonny buckland', 'will champion', 'chris martin']</td>
+          <td>['reading', 'book', 'old', 'legend', ...]</td>
+          <td>I've been reading books of old, the legends and ...</td>
+        </tr>
+        <tr>
+          <td>1</td>
+          <td>the chainsmokers</td>
+          <td>Paris</td>
+          <td>['the chainsmokers']</td>
+          <td>82</td>
+          <td>221506</td>
+          <td>2017</td>
+          <td>['elijah the alchemist']</td>
+          <td>['stayin', 'paris', 'get', 'away', ...]</td>
+          <td>We were stayin' in Paris<br>To get away from you...</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>the chainsmokers</td>
+          <td>This Feeling</td>
+          <td>['the chainsmokers', 'kelsea ballerini']</td>
+          <td>74</td>
+          <td>197946</td>
+          <td>2018</td>
+          <td>['travis barker', 'tom delonge', 'mark hoppus']</td>
+          <td>['tell', 'story', 'lay', 'reason', ...]</td>
+          <td>I'll tell you a story before it tells itself<br>...</td>
+        </tr>
+        <!-- Add more rows as needed -->
+      </tbody>
+    </table>
+  </div>
+  <p style="font-style: italic; color: #666;">Showing sample of 3731 rows × 9 columns</p>
 </div>
+
+
+
+
+</div>
+
+
 
 
 
@@ -226,25 +296,77 @@ body, html {
     <img src="/website/images/im5.png" alt="Tools visualization" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
     <div class="image-caption"><em>Click to enlarge</em></div>
   </div>
-  <p>We used Python libraries including pandas, spaCy, and NetworkX to structure and analyze the data.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis a necessitatibus molestias eos, facere, reprehenderit odit laborum, architecto ad qui totam. Molestiae temporibus rerum dolorum! Exercitationem sapiente in fugiat earum.</p>
   
   <h4>Dataset Analysis</h4>
   <div class="w3-center">
     <img src="/website/images/im5.png" alt="Dataset overview" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
   </div>
-  <p>Basic statistics like word frequencies, sentiment scores, and thematic clustering were calculated.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit excepturi, voluptatibus quaerat, ad harum tempore ullam eum reiciendis dignissimos molestiae ipsum deserunt sed. Aliquam praesentium sequi laudantium eius placeat quod.</p>
   
   <h4>Networks Creation</h4>
   <div class="w3-center">
     <img src="/website/images/im5.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
   </div>
-  <p>We built semantic networks linking themes and artists to discover central nodes and community structures.</p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
   
+<!-- Network 1 - image and text-->
+  <div class="w3-center">
+    <img src="/website/images/network1.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
+
+<!-- Network 2 - image and text-->
+  <div class="w3-center">
+    <img src="/website/images/network2.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
+  
+
+<!-- Network 3 - image and text-->
+  <div class="w3-center">
+    <img src="/website/images/round.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
+  
+
+  <!-- Network 4 - image and text-->
+  <div class="w3-center">
+    <img src="/website/images/round2.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
+  
+
+  <!-- Network 5 - image and text-->
+  <div class="w3-center">
+    <img src="/website/images/round3.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
+  
+  <!-- Network 6 - image and text-->
+  <div class="w3-center">
+    <img src="/website/images/roun4.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
+  
+
+
+
+
   <h4>Semantic Analysis</h4>
   <div class="w3-center">
     <img src="/website/images/im5.png" alt="Topic modeling" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
   </div>
-  <p>Topic modeling and sentiment trajectory over time revealed shifts in mood and genre popularity.</p>
+  <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, sed. Iste sunt nesciunt ut deserunt ipsum! Vero ipsum odit iusto ex? Quis odio nam et repudiandae beatae doloremque possimus veniam.</p>
 </div>
 
 
@@ -275,13 +397,13 @@ body, html {
   <h3 class="w3-center">DISCUSSION</h3>
   
   <h4>Key Findings</h4>
-  <p>Our analysis shows a growing complexity in lyrics and diversification in musical themes over the years.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus praesentium odio nulla quam voluptates, dolores maxime expedita rerum sunt dolor rem quia vitae, eum enim laborum deserunt explicabo labore! Excepturi.</p>
   
   <h4>Limitations</h4>
-  <p>Some genres and regions are underrepresented due to data access limitations.</p>
+  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia iste impedit vero atque obcaecati molestias molestiae ipsam nemo! Cumque veritatis possimus neque assumenda cum minus ipsum aliquid nihil vero dolores?</p>
   
   <h4>Future Work</h4>
-  <p>Future steps include expanding the dataset, incorporating audio features, and refining network models.</p>
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis in eaque laborum. Exercitationem perspiciatis temporibus nobis beatae, illo incidunt nam! Nostrum quaerat nisi earum dicta illo iusto rem rerum recusandae?</p>
 </div>
 
 
