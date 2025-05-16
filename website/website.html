@@ -226,15 +226,37 @@ body, html {
   <p>
     Here we again saved the dataframe from the previous fetching as a csv to ensure we did not loose data. Then loaded it to add the lyrics for each song. 
   </p>
+
+  <h4 id="lyricstokenizing">Lyrics Tokenizing</h4>
+  <p>
+    The tokenizing of the dataset works by counting unique songs and preparing the lyrics for text analysis. Before tokenization, the lyrics are cleaned by removing section headers and artist name cues commonly found in formatted lyrics, such as [Chorus], {Bridge}, or (Verse). This is done by dropping any line that begins with a bracket, brace, or parenthesis, ensuring that only the actual lyrical content remains. We then use NLTK to download language resources and define a function to clean and tokenize lyrics by lowercasing, removing stopwords, lemmatizing, and deduplicating words. The processed tokens are added as a new column, reordered for clarity, and saved to a new CSV.  
+  </p>
+
   
   <h4 id="cleaning">Data Cleaning and Preprocessing</h4>
-  <p>Preprocessing included normalization, punctuation removal, and handling missing data.</p>
+  <p>
+    We included data cleaning directly in each of the four steps instead of at the end, as a way of ensuring that we did not carry irrelevant data into the next step. For the dataset, we dropped any rows containing <code>NaN</code> values because we wanted all songs to contain complete features.
+  </p>
   
-  <h4 id="lyricstokenizing">Lyrics Tokenizing</h4>
-  <p>Lyrics were tokenized using standard NLP pipelines including stopword filtering and lemmatization.</p>
+  <p>
+    <strong>SPOTIFY API</strong><br>
+    When fetching the top 50 songs for the top artists, we experienced some challenges since some artists share names. This caused us to retrieve incorrect data. To resolve this, we looked up the specific Spotify artist IDs for those artists and used them to ensure accurate data retrieval.
+  </p>
   
-  <h4 id="stats">Dataset Stats</h4>
-  <p>Our dataset consists of 5,000 songs across 30 years with full metadata and cleaned lyrics.</p>
+  <p>
+    <strong>GENIUS</strong><br>
+    The Genius API returned extra information beyond just the lyrics, such as language annotations and descriptive content tags. To clean this, we created a list of common language terms and removed any lines containing those. Similarly, descriptive lines had distinct wording patterns, allowing us to filter them out and isolate pure lyrical content for our dataset.
+  </p>
+  
+  <h4 id="sourceoferror">Sources of error</h4>
+  <p>
+    We discovered during our work with the dataset that some artists names where replaced by other artists such as pink vs pink floyd and aditionally that some artists even though they appeared in the dataset were skipped in the code such as The Black Eyed Peas, U2 and fun. We also realised that we had mistakenly missed two artists "The Weeknd" and "Florida Georgia Line", which was a mistake we did not catch when fetching the dataset. Lastly. we had changed Adele's name to an ID code, but forgot to change it back afterwards, which also lead to her not being included. 
+    
+    Due to time restrainst at this point, we could not fetch the data again, and therefore decided to remove the problematic artists and continue without the missing artists. Furthermore, in the top 100 list there was a group based on covers of songs for kids, which we also removed from our list of top artists. This explains the missing artists in the following data stats. 
+  </p>
+
+
+
 
 <!-- Table Presentation -->
 <div class="w3-responsive" style="margin-top:32px;">
@@ -299,7 +321,16 @@ body, html {
   <p style="font-style: italic; color: #666;">Showing sample of 3731 rows × 9 columns</p>
 </div>
 
+
+
+<h4 id="stats">Dataset Stats</h4>
+<p>Our dataset now consists of metadata and cleaned lyrics.</p>
+
+
 </div>
+
+
+
 
 
 
@@ -330,95 +361,50 @@ body, html {
 
 
 
-
-
-
 <!------------------------------------------------------------------------------->
 
 
 <!-- ANALYSIS Section -->
 <div class="w3-content w3-container w3-padding-64" id="analysis">
-  <h3 class="w3-center">ANALYSIS</h3>
+  <h3 class="w3-center">TOOLS AND THEORY</h3>
   
+  
+  <h4>Process of theory</h4>
+
+  <p>
+    We hypothesized that many top-charting artists rely heavily on professional songwriters. This reliance might result in multiple artists sharing the same popular songwriters, which could, in turn, influence the emotional tone and themes present in their lyrics. To test this hypothesis, we constructed a custom dataset tailored to our goals, including attributes such as songs, artists, credited songwriters, popularity scores, lyrics, and release years. Before building the dataset, we carefully discussed which features were necessary to answer our research questions effectively.
+    <br> <br>
+    We then split our hypothesis into two distinct parts:
+    <br> <br>
+    <b>Structural Relationships:</b> <br>
+    We explored how artists and songs are interconnected through shared songwriters. For this, we constructed two types of networks. One, where nodes represented artists or songwriters and edges represented collaborations. The second, where nodes represented songs and edges represented shared songwriters. Using community detection algorithms and network analysis, we identified clusters of artists and the most influential songwriters behind the scenes. These network visualizations helped us uncover hidden structures and collaboration patterns in the music industry. We also performed statistical analysis to complement and validate the network findings. For example comparing the number of songwriters used per artist and how this relates to popularity.
+    <br><br>
+    <b>Lyrical Content and Themes:</b> <br>
+    To investigate how songwriters may influence lyrics, we tokenized the lyrics and used TF-IDF to identify prominent words and themes. We then compared these across different artists and further analyzed thematic differences between genres—specifically pop and rap. This allowed us to detect trends, recurring motifs, and emotional tones associated with certain songwriters or artist groups, revealing deeper connections between lyrical content and creative contributors.  
+  </p>
+  
+
   <h4>Tools</h4>
-  <div class="w3-center">
-    <img src="/website/images/im5.png" alt="Tools visualization" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis a necessitatibus molestias eos, facere, reprehenderit odit laborum, architecto ad qui totam. Molestiae temporibus rerum dolorum! Exercitationem sapiente in fugiat earum.</p>
-  
-  <h4>Dataset Analysis</h4>
-  <div class="w3-center">
-    <img src="/website/images/im5.png" alt="Dataset overview" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit excepturi, voluptatibus quaerat, ad harum tempore ullam eum reiciendis dignissimos molestiae ipsum deserunt sed. Aliquam praesentium sequi laudantium eius placeat quod.</p>
-  
-  <h4>Networks Creation</h4>
-  <div class="w3-center">
-    <img src="/website/images/im5.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
-  
-<!-- Network 1 - image and text-->
-  <div class="w3-center">
-    <img src="/website/network_images/network1.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
 
-<!-- Network 2 - image and text-->
-  <div class="w3-center">
-    <img src="/website/network_images/network2.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
-  
-
-<!-- Network 3 - image and text-->
-  <div class="w3-center">
-    <img src="/website/network_images/roun4.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
-  
-
-  <!-- Network 4 - image and text-->
-  <div class="w3-center">
-    <img src="/website/network_images/round.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
-  
-
-  <!-- Network 5 - image and text-->
-  <div class="w3-center">
-    <img src="/website/network_images/round2.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
-  
-  <!-- Network 6 - image and text-->
-  <div class="w3-center">
-    <img src="/website/network_images/round3.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
-    <div class="image-caption"><em>Click to enlarge</em></div>
-  </div>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero laboriosam sint nulla, autem earum porro corrupti, debitis animi, distinctio veniam doloremque ut velit! Nobis optio ea, sit vero iure nulla!</p>
-
-
-
+  <p>
+    
+    We used a combination of computational tools and techniques to process and analyze our dataset:
+    <br> <br>
+    <b>APIs and Data Collection:</b>
+    We used the Spotify API, Genius API, and MusicBrainz API to gather the data needed for our analysis, such as song metadata, songwriters, lyrics, popularity scores, and release years.
+    <br> <br>
+    <b>Network Analysis:</b>
+    To visualize and explore the relationships between artists and songwriters, we used the network construction tool NetworkX, and applied community detection algorithms and centrality measures. This helped us identify collaboration patterns and spotlight key figures in the music creation process.
+    <br> <br>
+    <b>Data Analysis and Visualization:</b>
+    We used pandas and matplotlib/seaborn to analyze distributions and trends in the dataset—such as average popularity per artist or songwriter—and to create supporting visualizations.
+    <br> <br>
+    <b>Natural Language Processing (NLP):</b>
+    We used NLP techniques, including tokenization and TF-IDF, to analyze the lyrical content of songs. This enabled us to identify dominant themes, compare lyrical trends across artists, and examine differences between genres like pop and rap.
+      
+  </p>
 </div>
 
-
-<!-- Modal for full size images on click -->
-<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
-  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
-  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
-    <img id="img01" class="w3-image">
-    <p id="caption" class="w3-opacity w3-large"></p>
-  </div>
-</div> 
 
 
 <!-- Third Parallax Image with Portfolio Text -->
@@ -427,6 +413,164 @@ body, html {
      <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
   </div>
 </div>
+
+
+<!------------------------------------------------------------------------------->
+
+
+<!-- NETWORK Section -->
+<div class="w3-content w3-container w3-padding-64" id="download">
+  <h3 class="w3-center">NETWORK</h3>
+  
+  
+  <h4>Songwriter and artist network</h4>
+  <p>
+    To explore the hidden relationships between artists, songs, and songwriters, we used several tools and techniques from network science and data analysis. Our objective was to uncover collaboration patterns, detect influential individuals, and understand how songwriters connect otherwise separate artists.
+    <br> <br>
+    We built mulitple graphs using NetworkX. The graphs were illustrated using Netwulf, which is a Python library for interactive network visualization that integrates with NetworkX, allowing us to explore and customize graph layouts in real time through a browser-based interface. On these graphs we used community detecting in the form of the Louvain algorithm. This algorithm detects communities or clusters of nodes that are more densely connected internally than with the rest of the network. In our context, it helped us identify groups of artists that share songwriters. We then dove deeper into the actual communities looking at their density and the centrality of the nodes. We coloured the nodes based on role - songwriter, artist or both - and also based on community. 
+    <br> <br>
+    NetworkX gave us the tool needed to build and analyze our custom graph structures from the real-world data. The Visualization tools were essential for interpreting the data ourself and also communicating our findings to others. The Louvain Algorithm allowed us to go beyond the groupings we ourself could grasp from the graph and instead seperate them into communties to discover deeper structural groupings within the music industry. Centrality measures gave us a quantitative way to rank songwriters and understand their strategic positions in the industry.
+  </p>
+
+  <p>
+
+    <b>Create graph</b>
+    <br> <br>
+    We build a collaboration dataframe to count how often a songwriter and an artist worked together. We also build a dataframe to capture the role of each node as to whether they are songwriters, artists or both. Here we discovered that the code includes some artist as both songwriters and artists due to a misspelling we missed in our initial data clean up, so they were manually fixed. 
+    <br> <br>
+    We used the role dataframe and collabdataframe to construct our graph and save it as a json. 
+  </p>
+  
+<!-- Network 1 - image and text-->
+  <div class="w3-center">
+    <img src="/website/network_images/network2.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+  <p>
+    Our first network is constructed with artists or songwriters as the nodes and songs as the link between the nodes. To distinguish more easily between songwriter and artists we have colour-coded the graph such that nodes that are purely songwriters are blue, and purely artists are yellow.  A lot of artists we discovered are also credited as songwriters and these we made green. 
+    We highlighted the top 10 nodes of songwriters with the most links, which are the bigger red nodes. The network contains 4578 nodes for each unique artist or songwriter and 6630 links.  
+    <br> <br>
+    Based on the numbers from the degree statistics, weighted degree statistics and from the visualization of the network we can see that the nodes form in a lot of big clusters centered around an artist. Most songwriters are connected to only one artist, as shown by the mode and median degree of 1 and the artists generally all have a lot of songwriters that are only connected to them. These single-link nodes tell us a lot about the music industry for the top artists, as it supports the idea that top artists often work with dedicated songwriting teams rather than widely shared contributors. It indicates that using songwriters is very common as each of these top artists seem to have their own team and also that high-profile artists tend to maintain exclusive collaborations with a select group of writers. This makes sense as we are looking at the most successful artists of the decade, who would certainly have the resources to keep such a team around themselves. 
+    <br> <br>
+    An important observation is the significant difference between the lowest and highest degree values in the network. The minimum degree is 0, which is a source of error as all nodes should be connected to at least one other error. However, the maximum degree reaches 165, meaning one artists or songwriter has collaborated with 165 different individuals in the network. We can look at the top 10 songwriters with the most connection: 
+
+  </p>
+
+  <div class="w3-responsive" style="max-width: 500px; margin: 32px auto;">
+    <h4 class="w3-center">Top 10 Songwriters</h4>
+    <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+      <thead class="w3-light-grey">
+        <tr>
+          <th>Rank</th>
+          <th>Songwriter</th>
+          <th>Count</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Max Martin</td><td>106</td></tr>
+        <tr><td>2</td><td>Benny Blanco</td><td>70</td></tr>
+        <tr><td>3</td><td>Louis Bell</td><td>66</td></tr>
+        <tr><td>4</td><td>Łukasz Gottwald</td><td>59</td></tr>
+        <tr><td>5</td><td>Tyler Joseph</td><td>57</td></tr>
+        <tr><td>6</td><td>Finneas</td><td>53</td></tr>
+        <tr><td>7</td><td>Jon Bon Jovi</td><td>52</td></tr>
+        <tr><td>8</td><td>Andrew Watt</td><td>46</td></tr>
+        <tr><td>9</td><td>Mike Dean</td><td>46</td></tr>
+        <tr><td>10</td><td>Jonny Buckland</td><td>45</td></tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+  <p>
+    Here we can see that there is a stark contrast between the highest and lowest amount of links for the songwriters, which highlights the uneven distribution of influence. The vast majority of songwriters are only connected to a single artist, while a small handful of highly connected individuals play a central and disproportionately influential role in shaping the music across multiple artists and genres.
+    <br> <br>
+    These top 10 songwriters also share a lot of attributes. They are all producers, who work behind-the-scenes across a variety of genres. While some of them such as Pharrell Williams and Max Martin has appeared in the music industry for a long time other are more recent additions such as Finneas. 
+  </p>
+
+  <h4>Community detection</h4>
+
+  <p>
+    We use community detection on the graph to support our conclusions from the previous graph. 
+  </p>
+
+  <div class="w3-center">
+    <img src="/website/network_images/com_det.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+  <p>
+    The conclusion from the previous graph is supported, when we use Louvain community detection on network as seen in the graph above, where all the communities are colored in. Here we can again see how the communities are formed around a central artist with that artists team of songwriters appearing as a cloud around them. 
+  </p>
+
+
+  <div class="w3-responsive" style="margin: 32px 0;">
+    <h4 class="w3-center">Highlighted Artist Communities (Louvain Clustering)</h4>
+    <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+      <thead class="w3-light-grey">
+        <tr>
+          <th>Community</th>
+          <th>Size (Nodes)</th>
+          <th>Density</th>
+          <th>Top Central Artists</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>14</td>
+          <td>439</td>
+          <td>0.005</td>
+          <td>Nicki Minaj, Drake, Cardi B</td>
+        </tr>
+        <tr>
+          <td>33</td>
+          <td>11</td>
+          <td>0.182</td>
+          <td>Mumford & Sons, Marcus Mumford, Marshall Okell</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>230</td>
+          <td>0.009</td>
+          <td>Travis Scott, Kanye West, Migos</td>
+        </tr>
+        <tr>
+          <td>22</td>
+          <td>175</td>
+          <td>0.012</td>
+          <td>Beyoncé, Jay Z</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+  <p>
+    Using the Louvain algorithm, we identified 34 distinct communities in our artist–songwriter network. These communities represent clusters of closely interconnected artists and songwriters—groups that collaborate frequently. The community sizes vary significantly, ranging from very small, tightly knit groups such as Community 33 with 11 nodes to much larger clusters like Community 14 with 439 nodes. This variation reflects the diversity in collaboration intensity and artistic reach among artists.
+    <br> <br>
+    Most communities have moderately low density between 0.009–0.020, indicating that while nodes are clustered, not every artist collaborates with all others in their community. Community 14, which includes Nicki Minaj, Drake, and Cardi B, is the largest with 439 nodes but it has a very low density 0.005, suggesting a sprawling but loosely connected network. Possibly a reflection of the wide range of high-profile artists in hip hop and pop. In contrast, Community 33, which includes Mumford & Sons, has only 11 nodes but the highest density 0.182, reflecting a small, tightly collaborating circle, which is a pattern that is more often seen in niche or genre-specific groups like folk or indie.
+    <br> <br>
+    The large, low-density communities often feature superstar artists with broad networks of collaborators Drake, Beyoncé, Kanye West. These artists might work with many different songwriters, but those writers may not collaborate with each other, resulting in lower internal density. The smaller, high-density communities more often represent bands or tightly-knit genre groups, where collaboration is more frequent and concentrated among the same members.
+    <br> <br>
+    Additionally from the community coloured graph we can also more easily see that there exists a lot of floating nodes, which do not seem to be connected to only one of these songwriter clouds, which indicates that there is still a network of more collaborative songwriters being slightly blocked from view by the clouds of single-link songwriters. In order to bring this hidden structure more towards the surface we reduce the network. 
+  
+  </p>
+
+  
+
+
+
+</div>
+
+
+<!-- Sixst Parallax Image with Portfolio Text -->
+<div class="bgimg-6 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
+     <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
+  </div>
+</div>
+
 
 
 
@@ -545,6 +689,15 @@ body, html {
 
 <!------------------------------------------------------------------------------->
 
+
+<!-- Modal for full size images on click -->
+<div id="modal01" class="w3-modal w3-black" onclick="this.style.display='none'">
+  <span class="w3-button w3-large w3-black w3-display-topright" title="Close Modal Image"><i class="fa fa-remove"></i></span>
+  <div class="w3-modal-content w3-animate-zoom w3-center w3-transparent w3-padding-64">
+    <img id="img01" class="w3-image">
+    <p id="caption" class="w3-opacity w3-large"></p>
+  </div>
+</div> 
 
 
 <!-- Footer -->
