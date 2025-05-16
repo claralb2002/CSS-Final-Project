@@ -155,14 +155,45 @@ body, html {
   <h3 class="w3-center">MOTIVATION</h3>
   
   <h4>Our dataset</h4>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Excepturi nesciunt nostrum minus, amet vero porro, natus maiores odio voluptates quod deleniti repudiandae corporis qui, sequi delectus dolorum voluptate incidunt quidem!</p>
+  <p>
+    Our dataset comprises the top 50 songs from each of the top 100 artists of the 2010s, as identified by Pulse Music’s ranking. For each artist, we retrieved their most popular 50 songs, resulting in a comprehensive collection of music data from the decade.
+    
+    To expand the dataset, we included additional attributes such as all featured artists, release year, track duration, Spotify popularity score, credited songwriters, and full song lyrics. The dataset was constructed manually using a combination of APIs, specifically the Genius API, Spotify API, and MusicBrainz API.
+  </p>
   
 
   <h4>Why did we choose this dataset</h4>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Tempora, dignissimos suscipit perferendis, amet sed libero error itaque, porro quo eligendi odio maiores qui explicabo repellendus. Labore, perferendis eum. Placeat, nostrum?</p>
+  <p>
+    We aimed to explore the relationship between popular artists, their songs, and the songwriters behind them by analyzing how artists and songs may be connected through shared songwriters or recurring lyrical themes. Additionally, we investigated how these connections might relate to a song’s popularity, whether lyrical themes are influenced by specific songwriters, and how these themes vary over time based on the release year.
+    
+    Our reasoning for focusing on the top 100 artists was that those who consistently appear at the top of the charts likely have greater access to resources, including the most talented songwriters. We hypothesized that this would reveal a “behind-the-scenes” network within the music industry, where a relatively small group of songwriters might be driving the success of many top-charting artists.
+    
+    To construct our dataset, we used the Genius API to retrieve lyrics, the MusicBrainz API to gather songwriter information, and the Spotify API to obtain additional attributes such as popularity scores, track durations, and release years.  
+  
+  
+  </p>
   
   <h4>Our Goal</h4>
-  <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia, aliquid laborum! Doloribus provident distinctio nam at facilis non minus incidunt, iusto odit sit? Suscipit temporibus deleniti blanditiis debitis nostrum non.</p>
+  <p>
+
+    We had both come across discussions online and from others suggesting that many popular artists do not write their own songs, and that numerous hit songs share common songwriters. This sparked our curiosity about the structure of the music industry behind the scenes beyond the artists we see on stage or hear on the radio. Our main goal was to create an engaging and insightful exploration of the modern music landscape by uncovering hidden connections between artists, songwriters, and songs.
+
+    To achieve this, we focused on two main areas:
+    
+
+    <ol>
+      <li>
+        1. Highlighting the role of songwriters: We investigated how songwriters contribute to various songs, how different top artists collaborate with them, and whether notable patterns exist in how songwriters are used across artists.
+      </li>
+      <li>
+        2. Exploring lyrical themes and trends: We analyzed the lyrics of the songs to identify popular themes, how they vary over time, and whether they correlate with specific songwriters or popularity levels.
+      </li>
+    </ol>
+    
+    At first glance, it can be difficult to differentiate which songwriters or artists serve as the central figures in the industry and who holds the most influence. Our goal was to shed light on these influential songwriters who often operate behind the scenes. By visualizing the relationships between artists and shared songwriters, we aimed to reveal patterns of collaboration and creative networks. Using network analysis, we identified communities of artists and songs connected by common songwriters, offering a broader understanding of the structure and dynamics of the industry. Including popularity metrics enabled us to assess how success is distributed across these communities and how top artists may differ in their strategic or stylistic use of songwriters.
+    
+    For our second research goal, we incorporated song lyrics to conduct semantic analysis and uncover deeper thematic patterns. By examining lyrics in relation to release year and popularity, we aimed to understand how lyrical themes evolve and which topics resonate most with audiences whether that is love, heartbreak, empowerment, or social commentary. This allowed us to explore how artists and songwriters reflect cultural shifts through language. Our analysis provided insight into recurring themes, emotional tones, and linguistic trends in popular music. Finally, our goal was to give users a more interactive and meaningful way to engage with the lyrical content of songs and appreciate the creative forces behind them.
+  </p>
 </div>
 
 <!-- First Parallax Image with Portfolio Text -->
@@ -182,13 +213,19 @@ body, html {
   <h3 class="w3-center">DATA</h3>
   
   <h4>Constructing Dataset</h4>
-  <p>We began by identifying sources for song metadata, charts, and lyrics.</p>
+  <p>
+    When we constructed the dataset we did it through multiple rounds. Firstly, we fetched the top 50 songs for each of the top 100 artists. To avoid loosing data, if the process for some reason was interrupted, we split the 100 artists into 2 and saved each round as a csv. Fr each of these csv files we then fecthed all lyrics and saved those as seperate csv's and repeated the process for fetching all songwriters. At the end after we had collected all data for all songs, we combined the multiple csv files into one dataset, which was saved as final_dataset.csv. Below is the 3 codes we used for fetching the data with the 3 API's.   
+  </p>
   
   <h4 id="fetchsongs">Fetch Songs</h4>
-  <p>Using APIs, we collected top charting songs across decades, capturing attributes like artist, genre, and release year.</p>
+  <p>
+    We saved the dataframe from the previous fetching as a csv to ensure we did not loose data. Then we loaded it here to add the songwriters for each song. 
+  </p>
   
   <h4 id="fetchlyrics">Fetch Lyrics</h4>
-  <p>We fetched lyrics from online sources and ensured each track had valid and complete text for further analysis.</p>
+  <p>
+    Here we again saved the dataframe from the previous fetching as a csv to ensure we did not loose data. Then loaded it to add the lyrics for each song. 
+  </p>
   
   <h4 id="cleaning">Data Cleaning and Preprocessing</h4>
   <p>Preprocessing included normalization, punctuation removal, and handling missing data.</p>
