@@ -8,6 +8,8 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Lato">
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
 <style>
 body,h1,h2,h3,h4,h5,h6 {font-family: "Manrope", sans-serif;}
 body, html {
@@ -88,7 +90,6 @@ body, html {
 <!-- Navbar with dropdown -->
 <div class="w3-top">
   <div class="w3-bar" id="myNavbar">
-    <!-- Mobile menu toggle -->
     <a class="w3-bar-item w3-button w3-hover-black w3-hide-medium w3-hide-large w3-right"
        href="javascript:void(0);" onclick="toggleFunction()" title="Toggle Navigation Menu">
       <i class="fa fa-bars"></i>
@@ -98,10 +99,10 @@ body, html {
 
     <!-- Dropdown MOTIVATION -->
     <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-button"><i class="fa fa-user"></i> MOTIVATION <i class="fa fa-caret-down"></i></button>
+      <button class="w3-button"><i class="fa fa-rocket"></i> MOTIVATION <i class="fa fa-caret-down"></i></button>
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
         <a href="#motivation" class="w3-bar-item w3-button">Our Idea</a>
-        <a href="#portfolio" class="w3-bar-item w3-button">Goal</a>
+        <a href="#goal" class="w3-bar-item w3-button">Goal</a>
       </div>
     </div>
 
@@ -112,29 +113,31 @@ body, html {
         <a href="#constructdataset" class="w3-bar-item w3-button">Constructing dataset</a>
         <a href="#fetchsongs" class="w3-bar-item w3-button">Fetch songs</a>
         <a href="#fetchlyrics" class="w3-bar-item w3-button">Fetch lyrics</a>
-        <a href="#fetchlyrics" class="w3-bar-item w3-button">Data cleaning and preprocessing</a>
+        <a href="#cleaning" class="w3-bar-item w3-button">Data cleaning and preprocessing</a>
         <a href="#lyricstokenizing" class="w3-bar-item w3-button">Lyrics tokenizing</a>
-        <a href="#lyricstokenizing" class="w3-bar-item w3-button">Dataset stats</a>
+        <a href="#stats" class="w3-bar-item w3-button">Dataset stats</a>
       </div>
     </div>
 
     <!-- Dropdown TOOLS -->
     <div class="w3-dropdown-hover w3-hide-small">
-      <button class="w3-button"><i class="fa fa-database"></i> ANALYSIS <i class="fa fa-caret-down"></i></button>
+      <button class="w3-button"><i class="fa fa-line-chart"></i> ANALYSIS <i class="fa fa-caret-down"></i></button>
       <div class="w3-dropdown-content w3-bar-block w3-card-4">
-        <a href="#constructdataset" class="w3-bar-item w3-button">Tools</a>
-        <a href="#fetchsongs" class="w3-bar-item w3-button">Dataset analysis</a>
-        <a href="#fetchlyrics" class="w3-bar-item w3-button">Networks creation</a>
-        <a href="#fetchlyrics" class="w3-bar-item w3-button">Semantic analysis</a>
+        <a href="#analysis" class="w3-bar-item w3-button">Tools</a>
+        <a href="#analysis" class="w3-bar-item w3-button">Dataset analysis</a>
+        <a href="#analysis" class="w3-bar-item w3-button">Networks creation</a>
+        <a href="#analysis" class="w3-bar-item w3-button">Semantic analysis</a>
       </div>
     </div>
 
     <!-- Dropdown DISCUSSION -->
-    <a href="#download" class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-download"></i> Discussion</a>
+    <a href="#discussion" class="w3-bar-item w3-button w3-hide-small"><i class="fa-comments"></i> Discussion</a>
 
-    <a class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-download"></i> Download notebook</a>
+    <a class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-download"></i> Download Dataset</a>
+    <a class="w3-bar-item w3-button w3-hide-small"><i class="fa fa-book"></i> Explainer Notebook</a>
   </div>
 </div>
+
 
 
 
@@ -173,7 +176,7 @@ body, html {
   
   </p>
   
-  <h4>Our Goal</h4>
+  <h4 id="goal">Our Goal</h4>
   <p>
 
     We had both come across discussions online and from others suggesting that many popular artists do not write their own songs, and that numerous hit songs share common songwriters. This sparked our curiosity about the structure of the music industry behind the scenes beyond the artists we see on stage or hear on the radio. Our main goal was to create an engaging and insightful exploration of the modern music landscape by uncovering hidden connections between artists, songwriters, and songs.
@@ -199,7 +202,6 @@ body, html {
 <!-- First Parallax Image with Portfolio Text -->
 <div class="bgimg-2 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
   </div>
 </div>
 
@@ -217,16 +219,6 @@ body, html {
     When we constructed the dataset we did it through multiple rounds. Firstly, we fetched the top 50 songs for each of the top 100 artists. To avoid loosing data, if the process for some reason was interrupted, we split the 100 artists into 2 and saved each round as a csv. Fr each of these csv files we then fecthed all lyrics and saved those as seperate csv's and repeated the process for fetching all songwriters. At the end after we had collected all data for all songs, we combined the multiple csv files into one dataset, which was saved as final_dataset.csv. Below is the 3 codes we used for fetching the data with the 3 API's.   
   </p>
   
-  <h4 id="fetchsongs">Fetch Songs</h4>
-  <p>
-    We saved the dataframe from the previous fetching as a csv to ensure we did not loose data. Then we loaded it here to add the songwriters for each song. 
-  </p>
-  
-  <h4 id="fetchlyrics">Fetch Lyrics</h4>
-  <p>
-    Here we again saved the dataframe from the previous fetching as a csv to ensure we did not loose data. Then loaded it to add the lyrics for each song. 
-  </p>
-
   <h4 id="lyricstokenizing">Lyrics Tokenizing</h4>
   <p>
     The tokenizing of the dataset works by counting unique songs and preparing the lyrics for text analysis. Before tokenization, the lyrics are cleaned by removing section headers and artist name cues commonly found in formatted lyrics, such as [Chorus], {Bridge}, or (Verse). This is done by dropping any line that begins with a bracket, brace, or parenthesis, ensuring that only the actual lyrical content remains. We then use NLTK to download language resources and define a function to clean and tokenize lyrics by lowercasing, removing stopwords, lemmatizing, and deduplicating words. The processed tokens are added as a new column, reordered for clarity, and saved to a new CSV.  
@@ -324,7 +316,6 @@ body, html {
 
 
 <h4 id="stats">Dataset Stats</h4>
-<p>Our dataset now consists of metadata and cleaned lyrics.</p>
 
 
 </div>
@@ -355,7 +346,6 @@ body, html {
 <!-- Second Parallax Image with Portfolio Text -->
 <div class="bgimg-3 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
   </div>
 </div>
 
@@ -410,7 +400,6 @@ body, html {
 <!-- Third Parallax Image with Portfolio Text -->
 <div class="bgimg-4 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
   </div>
 </div>
 
@@ -421,9 +410,7 @@ body, html {
 <!-- NETWORK Section -->
 <div class="w3-content w3-container w3-padding-64" id="download">
   <h3 class="w3-center">NETWORK</h3>
-  
-  
-  <h4>Songwriter and artist network</h4>
+  <h4 class="w3-center">Songwriter and artist network</h4>
   <p>
     To explore the hidden relationships between artists, songs, and songwriters, we used several tools and techniques from network science and data analysis. Our objective was to uncover collaboration patterns, detect influential individuals, and understand how songwriters connect otherwise separate artists.
     <br> <br>
@@ -557,8 +544,209 @@ body, html {
   
   </p>
 
+
+  <h4>Reduced network Songwriter and artist network</h4>
+  <p>
+    To try and determine the structure of the songwriters that are more collaborative and work with more than one artist, we remove all nodes with degree less than 2. 
+  </p>
+  <div class="w3-center">
+    <img src="/website/network_images/com_det2.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+  
+  <p>
+    The reduced graph is much more sparse and spread out and it is more difficult to determine any communities or general trends in the collaboration of the songwriters and artists. Therefore the community detection is very necessary in this case.
+  </p>
+
+  <h4>Community detection</h4>
+
+  
+  <div class="w3-center">
+    <img src="/website/network_images/com_det3.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+  
+  <p>
+    We colour the communities created by the Louvain algorithm and immediatly we can see 3 pretty bigger clusters as circled on the second image above. If we look more closely there also seem to be a turqois and orange cluster as circled in yellow below. Where the orange cluster is closely intertwened with the red. 
+  </p>
+    
+  <div class="w3-center">
+    <img src="/website/network_images/com_det4.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
   
 
+  <p>
+    The large ellipse encircle large, populated communities representing more mainstream and high-output clusters such pop or hip-hop megastars with many collaborators. Whereas the smaller ellipse enclose smaller, tighter communities, which could potentially be because they represent more genre-specific niches or band-focused songwriting teams. 
+    <br> <br>
+    In the middle of the graph there is a lot of mixing of the different nodes, where some nodes are positioned between major clusters, which suggest they may act as bridges or connectors between communities. These could be versatile songwriters or cross-genre artists collaborating with multiple teams. Their presence indicates that influence can span across stylistic boundaries in the industry.
+  </p>
+
+
+
+
+  <div class="w3-responsive" style="margin: 32px 0;">
+    <h4 class="w3-center">Genre-Based Communities (Louvain Clustering)</h4>
+    <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+      <thead class="w3-light-grey">
+        <tr>
+          <th>Community</th>
+          <th>Size (Nodes)</th>
+          <th>Density</th>
+          <th>Top Central Artists</th>
+          <th>Genre Pattern</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>1</td>
+          <td>118</td>
+          <td>0.026</td>
+          <td>Blake Shelton, Keith Urban, Jason Aldean</td>
+          <td>Country</td>
+        </tr>
+        <tr>
+          <td>2</td>
+          <td>47</td>
+          <td>0.055</td>
+          <td>Jay Z, Beyoncé, LMFAO</td>
+          <td>Hip-Hop / R&B Crossover</td>
+        </tr>
+        <tr>
+          <td>11</td>
+          <td>40</td>
+          <td>0.064</td>
+          <td>Bruno Mars, Halsey, Justin Timberlake</td>
+          <td>Mainstream Pop</td>
+        </tr>
+        <tr>
+          <td>13</td>
+          <td>54</td>
+          <td>0.045</td>
+          <td>Khalid, Calvin Harris, Rihanna</td>
+          <td>Pop / R&B</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+
+
+  <p>
+    The Louvain algorithm revealed 18 distinct communities in this network, each representing a group of artists and songwriters who are more densely connected to each other than to those outside their group. These communities range from very small to relatively large, and the density values show meaningful differences in how tightly these communities collaborate.
+    <br> <br>
+    Some communities of the communities reflect genre proximity: 
+    <br> <br>
+  
+  
+    <ol>
+      <li>
+        Community 1: Country artists like Blake Shelton and Jason Aldean
+      </li>
+      <li>
+        Community 2: Hip-hop/R&B crossover with Jay Z and Beyoncé
+      </li>
+      <li>
+        Community 11: Mainstream pop with Bruno Mars and Justin Timberlake
+      </li>
+      <li>
+        Community 13: Pop/R&B with Khalid and Rihanna
+      </li>
+    </ol>
+    This genre-based clustering suggests that songwriter usage often aligns with genre. 
+  
+  </p>
+  
+
+
+  <h3 class="w3-center">NETWORK</h3>
+  <h4 class="w3-center">Songs and songwriters network</h4>
+
+
+  <p>
+    Besides the songwriter and artists graph we also construct a network of the relationship between songs and songwriters. Here the songs are nodes with attributes such as popularity and release year added, where the links are the songswriters associated with the song. 
+  </p>
+
+
+  <div class="w3-center">
+    <img src="/website/network_images/round.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+
+  <h4>Network statistics</h4>
+  <div class="w3-center">
+    <img src="/website/network_images/num_songs.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+
+  <p>
+    The graph visualizes the relationship between songs based on their shared songwriters and it contains 3511 nodes and 37714 egdes. 
+    The core of the graph includes a tightly interconnected mass of songs, suggesting these songs were written by a network of commonly used or highly collaborative songwriters. Meanwhile, many songs also remain on the fringes, indicating independent creative processes with only one songwriter. The analysis of the network shows that out of the 4547 songwriters only 1305 worked on more than one song. After that first song the number of songs that each songwriters work on also drop drastically as seen in the histogram above. 
+    <br> <br>
+    <b>Graph statistics:</b>
+    <br> <br>
+    The graph relects the dual-nature of writing songs, where there exist a lot of songs written solely by one unique songwriter, who is not used on any other songs as seen by the graphs min degree of 0. The reason that a lot of songwriters are only included on one specific song could potentially be that they are only there to add a special expertise or talent. 
+    <br> <br>
+    The median of 6 and mode of 0 also show that a large number of songs are only weakly connected or not connected at all. This again highlights the asymmetry in the songwriting landscape. Most songs are written by small, non-overlapping teams, while a small subset of songs are connected to many others through highly prolific songwriters. The maximum degree of 213 is substantial as it indicates that one song shares writers with over 200 other songs. This likely reflects involvement of superstar songwriters who have contributed to a wide range of chart-topping hits.
+    <br> <br>
+    The higher average weighted degree compared to the unweighted version suggests that many song connections are strengthened by multiple shared contributors, not just a single co-writer. Combined with a maximum weighted degree of 373 it implies an extremely strong level of collaboration overlap for certain songs. This could be because of albums where many songs were shaped by the same small group of contributors.
+    <br> <br>
+    <b>Popularity:</b>
+    <br> <br>
+    The nodes in the network have been color-coded based on their popularity scores. However, upon visual inspection, there does not appear to be a clear or consistent pattern where specific communities show significantly higher or lower popularity on average. Popularity seems to be evenly distributed across the network, with both high- and low-popularity nodes present in most communities.
+    <br> <br>
+    This suggests that popularity is not tightly correlated with community structure in this network. In other words, songwriters or artists with high popularity are not concentrated within a few elite communities but are instead spread across various clusters. This may indicate that influence or success in the music industry is not solely determined by the artists collaborative circle, but perhaps also by individual reach, genre, or external factors not captured in the collaboration structure alone.
+
+  </p>
+
+  <h4>Community detection</h4>
+  <p>
+    To support the analysis above we use the Louvain algorithm to compute and seperate the graph into clear communities. 
+  </p>
+
+  <div class="w3-center">
+    <img src="/website/network_images/round2.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+  <p>
+    The community coloured graph above supports the previous statement and analysis where the outer fringe is made up of a lot of singular communities which contains only one song that is associated with a singular, unique songwriter. Additionally, from this graph we can see that the songs towards the center have been seperated into more prominent communties, where the graph illustrates that there exists influential songwriters who bridge the gaps between these communities. 
+  </p>
+
+  <h4>Reduced Song and songwriter network</h4>
+
+  <p>
+    Like with the songwriters/artist graph we reduce the network to look at the nodes with the most collaborative artists to research the structure behind. Here we also remove any nodes with degree less than 2. 
+  </p>
+
+  <div class="w3-center">
+    <img src="/website/network_images/round3.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+  <p>
+    This graph retains many of the core structural elements seen in the full network, but with a noticeably smaller central hub of interconnected songs and a greater number of smaller clusters, typically consisting of 1–10 songs. Unlike with the full network we can observe that a few of the bigger clusters contains a higher concentration of songs with a high popularity score. This suggests that there are certain influential songwriters operating within these clusters and contributing to producing the greatist hits for the top artists that we see. This highlights the often unseen role of elite songwriters in shaping the success of top-charting artists.
+  </p>
+
+  <h4>Community detection</h4>
+  <div class="w3-center">
+    <img src="/website/network_images/com_det5.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+  <div class="w3-center">
+    <img src="/website/network_images/com_det6.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+  <p>
+    We ran communtity detection on the reduced graph to highlight the clusters even though they were pretty clear from the popularity coloured graph. Here we noticed 3 big main clusters and by looking at the songs contained in these graphs, we could determine the 3 clusters encircled in black to be mainly popsongs from popartists, whereas the red ellipse is circling a cluster of rapsongs. These 3 clusters are connected by cross-collaborating songwriters as it is often seen that rapartists will feature on popsongs. 
+    <br><br>
+    It is also interesting to note that there seems to be 3 main songwriting teams as represented through the 3 pop clusters, which does collaborate across the community but still mainly stay with their own team enough for it to be detectable. 
+  </p>
 
 
 </div>
@@ -567,7 +755,248 @@ body, html {
 <!-- Sixst Parallax Image with Portfolio Text -->
 <div class="bgimg-6 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
+  </div>
+</div>
+
+
+
+
+
+<!------------------------------------------------------------------------------->
+
+
+<!-- Data analysis Section -->
+<div class="w3-content w3-container w3-padding-64" id="download">
+  
+  <h3 class="w3-center">Dataset analysis</h3>
+  <p>
+    In this section we dive further into the structure we discovered through the networks and into the actual songwriters that are the big influences behind the scenes. We extract tables through data analysis directly on the dataset. First, we have constructed 3 tables which give us information on how artists use songwriters by computing the artists with the most songwriters in common and also the artists with both the most and the least songwriters.  
+  </p>
+  
+
+  <div class="w3-responsive" style="max-width: 700px; margin: 32px auto;">
+    <h4 class="w3-center">Top 10 Artist Pairs by Shared Songwriters</h4>
+    <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+      <thead class="w3-light-grey">
+        <tr>
+          <th>Rank</th>
+          <th>Artist Pair</th>
+          <th>Shared Songwriters</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Pentatonix & Camila Cabello</td><td>22</td></tr>
+        <tr><td>2</td><td>Camila Cabello & Selena Gomez</td><td>21</td></tr>
+        <tr><td>3</td><td>Meek Mill & Travis Scott</td><td>18</td></tr>
+        <tr><td>4</td><td>Cardi B & Drake</td><td>18</td></tr>
+        <tr><td>5</td><td>Kanye West & Trey Songz</td><td>17</td></tr>
+        <tr><td>6</td><td>Miley Cyrus & Camila Cabello</td><td>16</td></tr>
+        <tr><td>7</td><td>Migos & Travis Scott</td><td>16</td></tr>
+        <tr><td>8</td><td>Travis Scott & Nicki Minaj</td><td>16</td></tr>
+        <tr><td>9</td><td>Meek Mill & Cardi B</td><td>15</td></tr>
+        <tr><td>10</td><td>Travis Scott & Drake</td><td>15</td></tr>
+      </tbody>
+    </table>
+  </div>
+  
+
+
+  <p>
+    This first table indicates shared songwriters between two subgroups - the first group being Travis Scott, Cardi B, Drake, Nicki Minaj and Meek Mill and the second group being Camila Cabello, Miley Cyrus and Selena Gomez. The first group is composed of rappers while the main group is primarily based in the pop genre, so here there is a clear separation and indication of songwriters connecting the artists belonging to similar categories. 
+  </p>
+
+  <h3>
+    Number of songwriters used
+  </h3>
+
+
+  <div class="w3-responsive" style="margin: 32px 0;">
+    <h4 class="w3-center">Top 10 Artists by Number of Songwriters</h4>
+    <div style="display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+  
+      <!-- Most Songwriters -->
+      <div style="flex: 1 1 45%;">
+        <h5 class="w3-center">Most Songwriters</h5>
+        <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+          <thead class="w3-light-grey">
+            <tr>
+              <th>Rank</th>
+              <th>Artist</th>
+              <th>Songwriters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Travis Scott</td><td>158</td></tr>
+            <tr><td>2</td><td>Beyoncé</td><td>149</td></tr>
+            <tr><td>3</td><td>Kanye West</td><td>145</td></tr>
+            <tr><td>4</td><td>Pentatonix</td><td>128</td></tr>
+            <tr><td>5</td><td>Nicki Minaj</td><td>124</td></tr>
+            <tr><td>6</td><td>Flo Rida</td><td>123</td></tr>
+            <tr><td>7</td><td>Cardi B</td><td>117</td></tr>
+            <tr><td>8</td><td>Pitbull</td><td>115</td></tr>
+            <tr><td>9</td><td>Camila Cabello</td><td>113</td></tr>
+            <tr><td>10</td><td>Trey Songz</td><td>113</td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Fewest Songwriters -->
+      <div style="flex: 1 1 45%;">
+        <h5 class="w3-center">Fewest Songwriters</h5>
+        <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+          <thead class="w3-light-grey">
+            <tr>
+              <th>Rank</th>
+              <th>Artist</th>
+              <th>Songwriters</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Paul McCartney</td><td>4</td></tr>
+            <tr><td>2</td><td>Billie Eilish</td><td>6</td></tr>
+            <tr><td>3</td><td>B.o.B</td><td>9</td></tr>
+            <tr><td>4</td><td>Lorde</td><td>13</td></tr>
+            <tr><td>5</td><td>Chris Stapleton</td><td>13</td></tr>
+            <tr><td>6</td><td>The Rolling Stones</td><td>13</td></tr>
+            <tr><td>7</td><td>Bon Jovi</td><td>17</td></tr>
+            <tr><td>8</td><td>Mumford & Sons</td><td>20</td></tr>
+            <tr><td>9</td><td>Taylor Swift</td><td>23</td></tr>
+            <tr><td>10</td><td>Sia</td><td>28</td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </div>
+  
+
+  We follow the first table of most shared songwriters with two tables about which artists use the most and least songwriters, where we see a lot of the same artists from the first table repeated in the table for artists with the most songwriters. It seems that these artists are not creating their own songs as they have a big team of songwriters at their side. It makes sense that if we should be able to see shared semantic themes in the lyrics it would in the songs from these artists. Therefore, we focus some of the semantic analysis on here. 
+
+  <h4>Songwriter collaborations</h4>
+
+  <div class="w3-responsive" style="margin: 32px 0;">
+    <h4 class="w3-center">Top Songwriters (Diversity & Volume)</h4>
+    <div style="display: flex; justify-content: space-between; gap: 32px; flex-wrap: wrap;">
+  
+      <!-- Unique Artist Collaborations -->
+      <div style="flex: 1 1 45%;">
+        <h5 class="w3-center">By Number of Unique Artists</h5>
+        <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+          <thead class="w3-light-grey">
+            <tr>
+              <th>Songwriter</th>
+              <th># Unique Artists</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Pharrell Williams</td><td>19</td></tr>
+            <tr><td>Ryan Tedder</td><td>18</td></tr>
+            <tr><td>Benny Blanco</td><td>17</td></tr>
+            <tr><td>Max Martin</td><td>17</td></tr>
+            <tr><td>Andrew Watt</td><td>17</td></tr>
+            <tr><td>Louis Bell</td><td>15</td></tr>
+            <tr><td>Jr.</td><td>14</td></tr>
+            <tr><td>Justin Tranter</td><td>13</td></tr>
+            <tr><td>Savan Kotecha</td><td>13</td></tr>
+            <tr><td>Ali Tamposi</td><td>13</td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Total Song Count -->
+      <div style="flex: 1 1 45%;">
+        <h5 class="w3-center">By Total Songwriting Credits</h5>
+        <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+          <thead class="w3-light-grey">
+            <tr>
+              <th>Songwriter</th>
+              <th># Songs</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Max Martin</td><td>106</td></tr>
+            <tr><td>Benny Blanco</td><td>70</td></tr>
+            <tr><td>Louis Bell</td><td>66</td></tr>
+            <tr><td>Łukasz Gottwald</td><td>59</td></tr>
+            <tr><td>Tyler Joseph</td><td>57</td></tr>
+            <tr><td>Finneas</td><td>53</td></tr>
+            <tr><td>Jon Bon Jovi</td><td>52</td></tr>
+            <tr><td>Mike Dean</td><td>46</td></tr>
+            <tr><td>Andrew Watt</td><td>46</td></tr>
+            <tr><td>Jack Antonoff</td><td>45</td></tr>
+          </tbody>
+        </table>
+      </div>
+  
+    </div>
+  </div>
+  
+
+  
+  
+  
+  <p>
+    We also examined the top 10 songwriters to assess their reach and influence by calculating two key metrics: the number of unique artists each has collaborated with and their total number of collaborations. The first table above show that each songwriter has worked with between 13 and 19 different artists. Considering that our dataset includes only 100 of the most prominent artists from the 2010s, this is a substantial number. 
+    <br><br>
+    The second table above ranks the songwriters by the number of songs they contributed to. Leading the list is Max Martin with 106 songs, followed by Benny Blanco (70) and Louis Bell (66). These figures underscore the immense impact that a handful of songwriters have had on shaping mainstream music in the 2010s. Notably, all individuals on the list have contributed to at least 45 songs, emphasizing their consistent presence behind many of the decade's biggest hits. The data reflects how a relatively small group of influential writers have helped define the sound and success of the top artists of the era.
+  </p>
+  
+  
+  
+  <h4>Songwriters yearly influence</h4>
+
+
+  <div class="w3-center">
+    <img src="/website/network_images/year_by_year.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+
+  <p>
+    The heatmap above illustrates the year-by-year influence of the top 10 songwriters based on the number of unique top artists they collaborated with each year. It is evident that while some songwriters like Max Martin have had sustained influence over two decades, others such as Benny Blanco, Andrew Watt, and Louis Bell show more concentrated bursts of activity, particularly during the mid to late 2010s. The heatmap also highlights that many of these songwriters were consistently working with multiple top artists per year, underlining their central role in shaping mainstream music trends over time. Peaks in activity for Benny Blanco in 2010 and Andrew Watt in 2018 suggest periods where they were especially dominant in the industry.
+  </p>
+
+
+  <h4>Songwriters popularity</h4>
+
+  <div class="w3-responsive" style="max-width: 600px; margin: 32px auto;">
+    <h4 class="w3-center">Top 10 Songwriters by Average Popularity</h4>
+    <table class="w3-table w3-bordered w3-striped w3-hoverable w3-white">
+      <thead class="w3-light-grey">
+        <tr>
+          <th>Rank</th>
+          <th>Songwriter</th>
+          <th>Average Popularity</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr><td>1</td><td>Finneas</td><td>76.43</td></tr>
+        <tr><td>2</td><td>Jack Antonoff</td><td>71.67</td></tr>
+        <tr><td>3</td><td>Mike Dean</td><td>70.61</td></tr>
+        <tr><td>4</td><td>Andrew Watt</td><td>70.28</td></tr>
+        <tr><td>5</td><td>Max Martin</td><td>69.12</td></tr>
+        <tr><td>6</td><td>Tyler Joseph</td><td>67.46</td></tr>
+        <tr><td>7</td><td>Louis Bell</td><td>67.39</td></tr>
+        <tr><td>8</td><td>Benny Blanco</td><td>64.80</td></tr>
+        <tr><td>9</td><td>Łukasz Gottwald</td><td>61.00</td></tr>
+        <tr><td>10</td><td>Jon Bon Jovi</td><td>55.21</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <p>
+    In this ranking of the top 10 songwriters by average song popularity, Finneas emerges as the clear leader with an impressive score of 76.4, reflecting the immense success of his work, which is primarily in collaboration with his sister Billie Eilish. Interestingly he does not appear on the list of songwriters with the most unique artist collaborations but is present on the list with the most collaborations and here with a very high popularity score. This indicates that he is a main driving force behind the global phenomenon of Billie Ellish. 
+    <br><br>
+    Jack Antonoff and Mike Dean follow Finneas with high averages of 71.7 and 70.6, respectively, indicating their ability to consistently produce critically and commercially successful tracks. Long-established powerhouse Max Martin still maintains a strong position at rank 5, reinforcing his longevity and relevance across decades. Songwriters like Tyler Joseph and Louis Bell also stand out for their consistently high-impact contributions. Notably, Jon Bon Jovi, though a legendary figure, rounds out the list with a lower average of 55.2, likely reflecting a broader mix of both mainstream and niche outputs over a longer career span.
+  </p>
+  
+</div>
+
+
+<!-- Sixst Parallax Image with Portfolio Text -->
+<div class="bgimg-6 w3-display-container w3-opacity-min">
+  <div class="w3-display-middle">
   </div>
 </div>
 
@@ -577,10 +1006,28 @@ body, html {
 <!------------------------------------------------------------------------------->
 
 
-<!-- MOTIVATION Section -->
+<!-- SEMANTIC ANALYSIS Section -->
 <div class="w3-content w3-container w3-padding-64" id="motivation">
 
   <h3 class="w3-center">SEMANTIC ANALYSIS</h3>
+
+  <p>
+    When we first generated a word cloud, it didn’t reveal any significant patterns, so we decided to focus our analysis on individual artists, genres and thematic topics instead.
+  </p>
+
+
+  <div class="w3-center">
+    <img src="/website/lyrics_images/wordcloud.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+
+  <p>
+    We selected Camila Cabello, Miley Cyrus, and Selena Gomez because they are among the most influential artists within a specific pop subgenre. Their prominence and commercial success make them representative figures for exploring the lyrical patterns and vocabulary commonly found in this part of the pop music landscape.
+    <br><br>
+    The purpose of this analysis is to investigate how language is used within the genre by comparing the artists’ lyrical styles. By applying TF-IDF (term frequency–inverse document frequency) to their lyrics, we can highlight the words that are most characteristic of each artist. This allows us to uncover the distinct themes, expressions, or stylistic choices that define their songwriting, and, more broadly, gain insight into the linguistic features that shape the genre as a whole.
+  </p>
+
 
   <!-- Pop -->
   <div class="w3-row-padding w3-center" style="margin-top:32px;">
@@ -589,25 +1036,30 @@ body, html {
   <div class="w3-third">
     <img src="/website/lyrics_images/camila2.png" alt="Pop Genre" class="w3-image" style="width:100%; cursor:pointer;" onclick="onClick(this)">
     <div class="image-caption"><em>Click to enlarge</em></div>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Deleniti, sed. Iste sunt nesciunt ut deserunt ipsum!</p>
   </div>
 
   <!-- Miley Cyrus -->
   <div class="w3-third">
     <img src="/website/lyrics_images/miley2.png" alt="Rock Genre" class="w3-image" style="width:100%; cursor:pointer;" onclick="onClick(this)">
     <div class="image-caption"><em>Click to enlarge</em></div>
-    <p>Vero ipsum odit iusto ex? Quis odio nam et repudiandae beatae doloremque possimus veniam.</p>
   </div>
 
   <!-- Selena Gomez -->
   <div class="w3-third">
     <img src="/website/lyrics_images/selena2.png" alt="Hip-Hop Genre" class="w3-image" style="width:100%; cursor:pointer;" onclick="onClick(this)">
     <div class="image-caption"><em>Click to enlarge</em></div>
-    <p>Distinctio modi deleniti facilis nobis eos veritatis pariatur fugit blanditiis corporis excepturi.</p>
   </div>
 
   </div>
 
+  <p>
+    Lyrics from Camila Cabello, Miley Cyrus, and Selena Gomez center on emotional introspection and themes of love, longing, and self-discovery. Words like “love,” “baby,” “never,” and “feel” dominate, painting a picture of vulnerability and personal relationships. The tone is expressive and reflective, often focused on romantic experiences and the complexities of the heart. Even in upbeat songs, there’s a consistent emotional undercurrent that highlights personal connection and self-worth.
+  </p>
+
+  <p>
+    Then, the same is done for Travis Scott, Cardi B, Nicki Minaj, Drakea and Meek Mill.
+
+  </p>
   <!-- Pop -->
   <div style="display: flex; flex-wrap: wrap; justify-content: space-between; gap: 5px; margin-top: 32px; text-align: center;">
 
@@ -649,13 +1101,49 @@ body, html {
   </div>
 
 
+  <p>
+    Lyrics from Travis Scott, Cardi B, Nicki Minaj, Drake, and Meek Mill are more assertive and raw, often laced with slang, profanity, and street vernacular. Words like “bitch,” “fuck,” “shit,” and “yeah” are prominent, reflecting themes of dominance, wealth, struggle, and identity. These lyrics emphasize power, confidence, and survival, frequently addressing external realities more than inner feelings. The energy is bold and unfiltered, mirroring the culture of competition and performance.
+
+  </p>
+
+
+  <div class="w3-center">
+    <img src="/website/lyrics_images/genres.png" alt="Semantic network" class="w3-image" style="max-width:1000px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+
+  <p>
+    The plot above shows a TF-IDF heatmap of the lyrical difference between two of the genre artists: pop and rap. Pop lyrics continue to emphasize emotional language, with higher TF-IDF scores for words like love, baby, feel, and leave, reflecting vulnerability, relationships, and inner conflict. In contrast, rap lyrics lean heavily on assertive and explicit terms—nigga, fuck, shit, and bitch—that convey power, confrontation, and social realism. The word yeah also appears prominently in rap, mirroring the genre's rhythmic and performative flow. While some shared terms like time and need surface in both, their usage likely diverges in tone and intent, further highlighting how each genre constructs meaning through distinct vocabularies.
+
+  </p>
+
+
+
+
+  <div class="w3-center">
+    <img src="/website/lyrics_images/themes.png" alt="Semantic network" class="w3-image" style="max-width:600px; margin-bottom:16px; cursor:pointer;" onclick="onClick(this)">
+    <div class="image-caption"><em>Click to enlarge</em></div>
+  </div>
+
+
+  <p>
+    The chart highlights the most common thematic topics found dataset. The most dominant topic—centered around heart, love, and feel—shows that emotional and romantic themes continue to be a powerful driver of popular music. This aligns with the idea that universally relatable feelings are a key factor in a song’s mass appeal.
+    <br><br>
+    Other prominent topics, such as light, night, sun (Topic 4), suggest that imagery and mood-setting also play a significant role in songwriting for popular tracks. Meanwhile, the prevalence of more explicit and aggressive language (nigga, bitch, shit in Topic 2) reflects the rise and influence of rap and hip-hop in the mainstream, especially among the top artists of the decade.
+    <br><br>
+    Finally, the topic distribution suggests that the most successful songs blend emotional resonance, catchy or atmospheric language, and bold expressions of identity. These lyrical strategies help explain why certain songs and themes dominate popular charts and continue to connect with wide audiences.
+  </p>
+
+
+
+
 
 </div>
 
 <!-- Fifth Parallax Image with Portfolio Text -->
 <div class="bgimg-5 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-    <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
   </div>
 </div>
 
@@ -667,21 +1155,32 @@ body, html {
 <div class="w3-content w3-container w3-padding-64" id="download">
   <h3 class="w3-center">DISCUSSION</h3>
   
-  <h4>Key Findings</h4>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus praesentium odio nulla quam voluptates, dolores maxime expedita rerum sunt dolor rem quia vitae, eum enim laborum deserunt explicabo labore! Excepturi.</p>
+  <h4>What went well?</h4>
+  <p>
+    We were able to uncover a lot of the structure behind the music industry and draw conclusions based on insights and evidence. The networks revealed that while there might not be a huge network structure there still exists a central base of songwriters supporting the top artists by aiding on their songs. The graphs also revealed a big tendency for artists to generally use songwriters a lot on their songs and also for them to have a personal team of songwriters around them. Here it could be seen that many songwriters only had one link in the graph connecting them to a singular artist and from the song graph we could see that they furthermore also only contributed to a single song for that artist. 
+    <br><br>
+    We successfully looked into the top 10 songwriters that were central for this graph to determine how many they collaborate with and how often. We looked at their influence throughout the year were several of them were names that had been presented for a long time all the way back to the start 2000's while others were more new but already had a big influence as seen by their popularity score and the amount of unique top artists they already had collaborated with. 
+    <br><br>
+    Lastly we could use the data-analysis to determine communities of artists who had a tendence to both use a lot of songwriters and also shared a lot of songwriters and extract to interesting communties, which represented the genres pop and rap. We conducted lyrical analysis on these artists genres to look for similarities both inside the communities and to compare the difference in lyrical content between the communties. 
+  </p>
   
-  <h4>Limitations</h4>
-  <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Mollitia iste impedit vero atque obcaecati molestias molestiae ipsam nemo! Cumque veritatis possimus neque assumenda cum minus ipsum aliquid nihil vero dolores?</p>
+  <h4>What is missing?</h4>
+  <p>
+    Several improvements could enhance the depth and accuracy of the analysis. First, the data retrieval and cleaning process still has inconsistencies as some song titles continued to include featured artists, which may have skewed the amount of songs, because it allows for duplicates. This could give some songwriters more influence as they would appear more often. An even more thorough walk through and examination would improve and fix this problem, but it was not possible to do this round due to time constraints. 
+    <br><br>
+    Expanding the dataset to include more songs and artists beyond the current top 100 could potentially provide a broader perspective and help identify influential songwriters operating outside this elite group. Including songs written by the top songwriters for artists not in the top 100 could uncover more hidden connections within the industry and might also reveal connections between the current group of songwriters, which are just not captured in the songs we have included. 
+    <br><br>
+      Finally, there is a noticeable imbalance between the number of songs, songwriters, and artists, which means that the current scope may be too narrow to fully capture the network’s complexity. Adding the songwriters other credited songs could potentially reveal a more complex connection between songwriters than the one uncovered here. Most of the conclusion for this network would still stand and represent one area of the music industry even if we were to expand the network as it reflects the production for the songs we have included. Expanding on the datasets size might reveal other areas and would allow us to expand on our current conclusion. 
+
+
+  </p>
   
-  <h4>Future Work</h4>
-  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perspiciatis in eaque laborum. Exercitationem perspiciatis temporibus nobis beatae, illo incidunt nam! Nostrum quaerat nisi earum dicta illo iusto rem rerum recusandae?</p>
-</div>
+ </div>
 
 
 <!-- Sixst Parallax Image with Portfolio Text -->
 <div class="bgimg-6 w3-display-container w3-opacity-min">
   <div class="w3-display-middle">
-     <span class="w3-xxlarge w3-text-white w3-wide">Something</span>
   </div>
 </div>
 
