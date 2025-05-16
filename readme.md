@@ -6,15 +6,15 @@ Link to Dataset (API) : https://wiki.musicbrainz.org/MusicBrainz_API/Search
 Link to Lyrics : https://docs.genius.com/#/getting-started-h1 
 
 ### Dataset including:
-- Song name
-- Area
 - Artist
-- Label
+- Song name
+- Featuring artists
 - Popularity score
-- Work (artist, composer, lyricist, writer)
+- Songwriters (artist, composer, lyricist, writer)
+- Popularity
+- Release_year
+- Duration
 - Lyrics
-Maybe:
-- Genre
 
 
 ### Project disposition:
@@ -26,24 +26,15 @@ Maybe:
     - Fetch Lyrics from genius
 - Data preprocessing
     - Cleaning
-    - Parsing Lyrics
+    - Tokenizing Lyrics
+- Networks
+    -  Network graphs
+        - Nodes: songs, links: songwriters
+        - Nodes: artists/songwriters, links: songs
+    - Community detection
 - Exploritory Data Analysis
-    - Extract tokens from lyrics
+    - Count of songwriters pr. artists, most shared songwriters etc...
+- Lyric analysis
     - Frequency - tf, idf, tf-idf
-    - Lyric sentiment score
-    - Correlation
-        - Between popularity and sentiment in songs, duration, other atributes
-        - Popularity and release date
-- Modeling
-    - Clustering
-        - Network graphs
-        - Nodes: tracks, links: artists/songwriters
-- Results
-    - Summarize
-    - Discuss
-- Conclusion
-- Appendix
-
-
-
-### Description
+    - Community lyric comparison
+- Discussion
